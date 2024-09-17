@@ -1,4 +1,4 @@
-# elib
+# e-library
 
 An mobile e-library to simplify the uni-library experience.
 
