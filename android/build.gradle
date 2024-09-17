@@ -1,0 +1,30 @@
+//buildscript {
+//    ext.kotlin_version = '1.8.22' // 将 Kotlin 版本升级到 1.8.22
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//    dependencies {
+//        classpath "com.android.tools.build:gradle:8.3.0" //    Android Gradle plugins compatible with Kotlin 1.8.x
+//        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Use Kotlin 1.8.22
+//    }
+//}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
